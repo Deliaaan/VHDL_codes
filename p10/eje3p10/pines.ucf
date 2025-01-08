@@ -1,0 +1,25 @@
+# Archivo de pines para SumadorRestador
+
+# Definición de pines para las entradas A[3:0]
+NET "A[0]" LOC = "P1";
+NET "A[1]" LOC = "P2";
+NET "A[2]" LOC = "P3";
+NET "A[3]" LOC = "P4";
+
+# Definición de pines para las entradas B[3:0]
+NET "B[0]" LOC = "P5";
+NET "B[1]" LOC = "P6";
+NET "B[2]" LOC = "P7";
+NET "B[3]" LOC = "P8";
+
+# Definición de pin para la entrada de selección Sel
+NET "Sel" LOC = "P9";
+
+# Definición de pines para las salidas Resultado[3:0]
+NET "Resultado[0]" LOC = "P10";
+NET "Resultado[1]" LOC = "P11";
+NET "Resultado[2]" LOC = "P12";
+NET "Resultado[3]" LOC = "P13";
+
+# Definición de pin para la salida CarryOut
+NET "CarryOut" LOC = "P14";

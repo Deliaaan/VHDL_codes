@@ -1,0 +1,39 @@
+-- filepath: sumador_restador.vhd
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity SumadorRestador is
+    Port (
+        A : in STD_LOGIC_VECTOR (3 downto 0);
+        B : in STD_LOGIC_VECTOR (3 downto 0);
+        Sel : in STD_LOGIC; -- Selector: 0 para suma, 1 para resta
+        Resultado : out STD_LOGIC_VECTOR (3 downto 0);
+        CarryOut : out STD_LOGIC
+    );
+end SumadorRestador;
+
+architecture Behavioral of SumadorRestador is
+    signal B_interno : STD_LOGIC_VECTOR (3 downto 0);
+    signal Carry_interno : STD_LOGIC;
+begin
+    -- Multiplexor para seleccionar entre B y su complemento a 2
+    B_interno <= B when Sel = '0' else (not B + "0001");
+
+    -- Sumador de 4 bits
+    process(A, B_interno, Sel)
+    begin
+        if Sel = '0' then
+            -- Suma
+            Carry_interno <= '0';
+        else
+            -- Resta
+            Carry_interno <= '1';
+        end if;
+
+        -- Realizar la operación
+        Resultado <= A + B_interno + Carry_interno;
+        CarryOut <= (A(3) and B_interno(3)) or (A(3) and Carry_interno) or (B_interno(3) and Carry_interno);
+    end process;
+end Behavioral;

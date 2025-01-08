@@ -1,0 +1,21 @@
+# Archivo de asignación de pines para el contador ascendente/descendente
+
+## Asignación de pines de entrada
+NET "clk" LOC = "P1";
+NET "reset" LOC = "P2";
+NET "up_down" LOC = "P3";
+
+## Asignación de pines para los segmentos del display
+NET "segments[0]" LOC = "P4";
+NET "segments[1]" LOC = "P5";
+NET "segments[2]" LOC = "P6";
+NET "segments[3]" LOC = "P7";
+NET "segments[4]" LOC = "P8";
+NET "segments[5]" LOC = "P9";
+NET "segments[6]" LOC = "P10";
+
+## Asignación de pines para la selección de dígitos del display
+NET "digit_select[0]" LOC = "P11";
+NET "digit_select[1]" LOC = "P12";
+NET "digit_select[2]" LOC = "P13";
+NET "digit_select[3]" LOC = "P14";

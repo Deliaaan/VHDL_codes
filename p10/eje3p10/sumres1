@@ -1,0 +1,65 @@
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date:    00:43:08 01/05/2025 
+-- Design Name: 
+-- Module Name:    adder_subtractor_4bits - beh 
+-- Project Name: 
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity adder_subtractor_4bits is
+    Port (
+        A        : in  STD_LOGIC_VECTOR(3 downto 0);  -- Primer operando
+        B        : in  STD_LOGIC_VECTOR(3 downto 0);  -- Segundo operando
+        Sel      : in  STD_LOGIC;                     -- Selector: 0 -> Suma, 1 -> Resta
+        Result   : out STD_LOGIC_VECTOR(3 downto 0);  -- Resultado
+        CarryOut : out STD_LOGIC;                     -- Salida de acarreo
+        Overflow : out STD_LOGIC                      -- Indicador de desbordamiento
+    );
+end adder_subtractor_4bits;
+
+architecture beh of adder_subtractor_4bits is
+    signal B_input   : STD_LOGIC_VECTOR(3 downto 0); -- Segundo operando ajustado
+    signal Carry     : STD_LOGIC;                     -- Acarreo interno
+    signal SumResult : STD_LOGIC_VECTOR(3 downto 0);  -- Resultado interno
+begin
+    -- Operando B ajustado para suma/resta
+    B_input <= B when Sel = '0' else not B; -- Complemento si es resta
+
+    -- Operación de suma/resta con acarreo
+    process(A, B_input, Sel)
+    begin
+        if Sel = '1' then
+            -- Resta: A - B -> A + (~B + 1)
+            Carry <= '1';
+        else
+            -- Suma: A + B
+            Carry <= '0';
+        end if;
+        
+        -- Operación aritmética
+        SumResult <= A + B_input + Carry;
+    end process;
+
+    -- Asignación de resultados
+    Result   <= SumResult;
+    CarryOut <= (A(3) and B_input(3)) or (A(3) and not SumResult(3)) or (B_input(3) and not SumResult(3));
+    Overflow <= (A(3) xor B_input(3)) and (A(3) xor SumResult(3));
+
+end beh;
+
