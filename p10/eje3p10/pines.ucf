@@ -1,25 +1,21 @@
-# Archivo de pines para SumadorRestador
+# Asignación de pines para el módulo SumResBIN
 
-# Definición de pines para las entradas A[3:0]
-NET "A[0]" LOC = "P1";
-NET "A[1]" LOC = "P2";
-NET "A[2]" LOC = "P3";
-NET "A[3]" LOC = "P4";
+# Entradas del módulo
+NET "a<0>" LOC = "P11";  # Pin físico para a(0)
+NET "a<1>" LOC = "L3";  # Pin físico para a(1)
+NET "a<2>" LOC = "K3";  # Pin físico para a(2)
+NET "a<3>" LOC = "B4";  # Pin físico para a(3)
 
-# Definición de pines para las entradas B[3:0]
-NET "B[0]" LOC = "P5";
-NET "B[1]" LOC = "P6";
-NET "B[2]" LOC = "P7";
-NET "B[3]" LOC = "P8";
+NET "b<0>" LOC = "G3";  # Pin físico para b(0)
+NET "b<1>" LOC = "F3";  # Pin físico para b(1)
+NET "b<2>" LOC = "E2";  # Pin físico para b(2)
+NET "b<3>" LOC = "N3";  # Pin físico para b(3)
 
-# Definición de pin para la entrada de selección Sel
-NET "Sel" LOC = "P9";
+NET "d" LOC = "G12";     # boton de resta
 
-# Definición de pines para las salidas Resultado[3:0]
-NET "Resultado[0]" LOC = "P10";
-NET "Resultado[1]" LOC = "P11";
-NET "Resultado[2]" LOC = "P12";
-NET "Resultado[3]" LOC = "P13";
-
-# Definición de pin para la salida CarryOut
-NET "CarryOut" LOC = "P14";
+# Salida de LEDS
+NET "c<0>" LOC = "M5"; # Pin físico para c(0)
+NET "c<1>" LOC = "M11"; # Pin físico para c(1)
+NET "c<2>" LOC = "P7"; # Pin físico para c(2)
+NET "c<3>" LOC = "P6"; # Pin físico para c(3)
+NET "c<4>" LOC = "N5"; # Pin físico para c(4)
